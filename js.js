@@ -15,3 +15,6 @@ if (!list) {
 list.hidden = !list.hidden
     });
 }
+
+// your code works, but wrong. Ul must hidden only when we push on his parent li.
+// your elements are hidden when I push near elements, it's not that we want 
