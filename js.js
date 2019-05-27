@@ -1,17 +1,21 @@
-'use strict';
+let tree = document.querySelectorAll('ul')[0];
+let li = tree.querySelectorAll('li');
 
-createTree(document.querySelector('.tree'));
+for (let i = 0; i < li.length; i++) {
+    let treeLi = li[i];
+    let span = document.createElement('span');
+    treeLi.insertBefore(span, treeLi.firstChild);
+    span.append(span.nextSibling);
+}
 
-function createTree(element) {
-    element.addEventListener('click', (event) => {
-const title = event.target.closest('.title');
-if (!title) {
-    return
-}
-const list = title.closest('li').querySelector('ul');
-if (!list) {
-    return
-}
-list.hidden = !list.hidden
-    });
-}
+tree.addEventListener('click', (event) => {
+    let target = event.target;
+    if (target.tagName != 'SPAN') {
+        return;
+    }
+    let child = target.parentNode.querySelectorAll('ul')[0];
+    if (!child) {
+        return;
+    }
+    child.hidden = !child.hidden;
+});
